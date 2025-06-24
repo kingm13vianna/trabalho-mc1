@@ -1,10 +1,9 @@
 #include <iostream>
 using namespace std;
 
-// Função que realiza a divisão inteira sem usar /, *, %
 int divide(int dividend, int divisor) {
     if (divisor == 0) {
-        return 0; // ou poderia lançar erro
+        return 0; 
     }
 
     bool negative = false;
@@ -30,12 +29,11 @@ int divide(int dividend, int divisor) {
     return quotient;
 }
 
-// Exemplo de uso
 int main() {
     cout << divide(10, 3) << endl;   // 3
     cout << divide(15, -3) << endl;  // -5
     cout << divide(-20, 4) << endl;  // -5
     cout << divide(-7, -2) << endl;  // 3
     cout << divide(0, 5) << endl;    // 0
-    cout << divide(5, 0 ) << endl;   // 0 (tratamento de divisão por zero)
+    cout << divide(5, 0 ) << endl;   // 0 
 }
