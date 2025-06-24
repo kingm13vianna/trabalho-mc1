@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int modulo(int dividend, int divisor) {
+    if (divisor == 0) {
+        return 0;
+    }
+
+    bool negative = false;
+    if (dividend < 0) {
+        negative = true;
+        dividend = -dividend;
+    }
+    if (divisor < 0) {
+        divisor = -divisor;
+    }
+
+    while (dividend >= divisor) {
+        dividend = dividend - divisor;
+    }
+
+    if (negative) {
+        return -dividend;
+    }
+
+    return dividend;
+}
+
+int main() {
+    cout << modulo(10, 3) << endl;   // 1
+    cout << modulo(15, -4) << endl;  // 3
+    cout << modulo(-20, 6) << endl;  // -2
+    cout << modulo(-7, -3) << endl;  // -1
+    cout << modulo(5, 0) << endl;    // 0
+}
