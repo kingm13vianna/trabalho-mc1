@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+// Função para verificar se um número é primo
+bool ehPrimo(int n) {
+    if (n <= 1) {
+        return false;
+    }
+
+    // Verifica divisores de 2 até n - 1 (poderia otimizar até n/2 ou raiz(n))
+    for (int i = 2; i < n; i++) {
+        int resto = n;
+        while (resto >= i) {
+            resto = resto - i;
+        }
+        if (resto == 0) {
+            return false; // Tem um divisor além de 1 e ele mesmo
+        }
+    }
+
+    return true;
+}
+
+// Função para imprimir todos os primos entre a e b (inclusive)
+void primosNoIntervalo(int a, int b) {
+    for (int i = a; i <= b; i++) {
+        if (ehPrimo(i)) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    primosNoIntervalo(2, 10); // Saída: 2 3 5 7
+    primosNoIntervalo(10, 20); // Saída: 11 13 17 19
+}
