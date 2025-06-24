@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int piso(double numero) {
+    if (numero >= 0) {
+        int resultado = 0;
+        while (resultado + 1 <= numero) { //até encontrar o maior inteiro ou menor igual ao numero
+            resultado++;
+        }
+        return resultado;
+    } 
+    else {
+        int resultado = -1;
+        while (resultado > numero) { //até encontrar maior inteiro menor ou igual o numero
+            resultado--;
+        }
+        return resultado;
+    }
+}
+
+int main() {
+    // Testes da função piso
+    cout << "piso(3.7) = " << piso(3.7) << endl;       // Deve retornar 3
+    cout << "piso(-2.3) = " << piso(-2.3) << endl;     // Deve retornar -3
+    cout << "piso(5.0) = " << piso(5.0) << endl;       // Deve retornar 5
+    cout << "piso(-1.0) = " << piso(-1.0) << endl;     // Deve retornar -1
+    cout << "piso(0.7) = " << piso(0.7) << endl;       // Deve retornar 0
+    cout << "piso(-0.7) = " << piso(-0.7) << endl;     // Deve retornar -1
+    cout << "piso(0.2) = " << piso(0.2) << endl;       // Deve retornar 0
+    cout << "piso(-0.2) = " << piso(-0.2) << endl;     // Deve retornar -1
+    cout << "piso(0.0) = " << piso(0.0) << endl;       // Deve retornar 0
+    cout << "piso(-0.999) = " << piso(-0.999) << endl; // Deve retornar -1
+
+    return 0;
+}
