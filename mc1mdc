@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+void printPasso(int a, int b, int q, int r) {
+    cout << a << " = " << q << " * " << b << " + " << r << endl;
+}
+
+int meuAbs(int x) {
+    return (x < 0) ? -x : x;
+}
+
+int mdc_extendido(int a, int b, int &s, int &t) {
+    int r1 = meuAbs(a), r2 = meuAbs(b);
+    int s1 = 1, s2 = 0;
+    int t1 = 0, t2 = 1;
+
+    while (r2 != 0) {
+        int q = r1 / r2;
+        int r = r1 - q * r2;
+
+        printPasso(r1, r2, q, r);
+
+        int s_temp = s1 - q * s2;
+        int t_temp = t1 - q * t2;
+
+        r1 = r2;
+        r2 = r;
+
+        s1 = s2;
+        s2 = s_temp;
+
+        t1 = t2;
+        t2 = t_temp;
+    }
+
+    //se os inputs eram negativos
+    if (a < 0) s1 = -s1;
+    if (b < 0) t1 = -t1;
+
+    s = s1;
+    t = t1;
+    return r1;
+}
+
+int main() {
+    int a, b;
+    cout << "Digite dois numeros inteiros (a b): ";
+    cin >> a >> b;
+
+    int s, t;
+    int mdc = mdc_extendido(a, b, s, t);
+
+    cout << "\nMDC(" << a << ", " << b << ") = " << mdc << endl;
+    cout << "Coeficientes de Bezout: s = " << s << ", t = " << t << endl;
+    cout << "Verificacao: " << mdc << " = (" << s << ") * " << a << " + (" << t << ") * " << b << endl;
+
+    return 0;
+}
