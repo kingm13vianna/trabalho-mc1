@@ -1,0 +1,86 @@
+#include <iostream>
+using namespace std;
+
+int modExp(int base, int expoente, int mod) {
+    int resultado = 1;
+    base = base % mod;
+    while (expoente > 0) {
+        if (expoente % 2 == 1) {
+            resultado = (resultado * base) % mod;
+        }
+        base = (base * base) % mod;
+        expoente = expoente / 2;
+    }
+    return resultado;
+}
+
+int mdcEstendido(int a, int b, int &x, int &y) {
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    int x1, y1;
+    int mdc = mdcEstendido(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - (a / b) * y1;
+    return mdc;
+}
+
+int inversoModular(int e, int totiente) {
+    int x, y;
+    int mdc = mdcEstendido(e, totiente, x, y);
+    if (mdc != 1) return -1;
+    if (x < 0) x += totiente;
+    return x;
+}
+
+int main() {
+    
+    int p = 11;
+    int q = 13;
+    char mensagem[] = "anderson melhor professor"; 
+
+    int n = p * q;
+    int totiente = (p - 1) * (q - 1);
+ 
+    int e = 3;
+    while (e < totiente) {
+        int x, y;
+        if (mdcEstendido(e, totiente, x, y) == 1) {
+            break;
+        }
+        e += 2;
+    }
+
+    int d = inversoModular(e, totiente);
+    if (d == -1) {
+        cout << "Erro: não foi possível calcular o inverso modular.\n";
+        return 1;
+    }
+
+    cout << "Chave pública: (e = " << e << ", n = " << n << ")\n";
+    cout << "Chave privada: (d = " << d << ", n = " << n << ")\n";
+
+  
+    int cifrado[100];
+    int i = 0;
+
+    cout << "\nTexto cifrado (em números): ";
+    while (mensagem[i] != '\0') {
+        int m = mensagem[i] - 'a';
+        cifrado[i] = modExp(m, e, n);
+        cout << cifrado[i] << " ";
+        i++;
+    }
+
+    cout << "\n\nTexto decifrado: ";
+    for (int j = 0; j < i; j++) {
+        int m = modExp(cifrado[j], d, n);
+        char letra = m + 'a';
+        cout << letra;
+    }
+
+    cout << endl;
+    return 0;
+}
