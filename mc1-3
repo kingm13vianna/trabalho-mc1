@@ -1,29 +1,29 @@
 #include <iostream>
 using namespace std;
 
-int modulo(int dividend, int divisor) {
+int modulo(int dividendo, int divisor) {
     if (divisor == 0) {
         return 0;
     }
 
-    bool negative = false;
-    if (dividend < 0) {
-        negative = true;
-        dividend = -dividend;
+    bool negativo = false;
+    if (dividendo < 0) {
+        negativo = true;
+        dividendo = -dividendo;
     }
     if (divisor < 0) {
         divisor = -divisor;
     }
 
-    while (dividend >= divisor) {
-        dividend = dividend - divisor;
+    while (dividendo >= divisor) {
+        dividendo = dividendo - divisor;
     }
 
-    if (negative) {
-        return -dividend;
+    if (negativo) {
+        return -dividendo;
     }
 
-    return dividend;
+    return dividendo;
 }
 
 int main() {
