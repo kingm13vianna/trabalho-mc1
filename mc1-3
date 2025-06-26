@@ -1,35 +1,55 @@
 #include <iostream>
 using namespace std;
 
-int modulo(int dividendo, int divisor) {
-    if (divisor == 0) {
+int abs(int x) {
+    return x < 0 ? -x : x;
+}
+
+int dividir(int a, int b) {
+    if (b == 0) {
+      cout << "divisão por 0" << endl;
         return 0;
     }
 
-    bool negativo = false;
-    if (dividendo < 0) {
-        negativo = true;
-        dividendo = -dividendo;
-    }
-    if (divisor < 0) {
-        divisor = -divisor;
+    bool negativo = ( a < 0) != ( b < 0);
+    int x = abs(a);
+    int y = abs(b);
+
+    int quociente = 0;
+    while (x >= y){
+        x -= y;
+        quociente++;
     }
 
-    while (dividendo >= divisor) {
-        dividendo = dividendo - divisor;
+    return negativo ? -quociente : quociente;
+
+}
+
+int mod(int a, int b) {
+    if (b == 0){
+        cout << "mod por 0" << endl;
+        return 0;
     }
 
-    if (negativo) {
-        return -dividendo;
+    int quociente = dividir(a, b);
+    int resto = a - quociente * b;
+
+    if (resto < 0){
+        resto += abs(b);
     }
 
-    return dividendo;
+    return resto;
 }
 
 int main() {
-    cout << modulo(10, 3) << endl;   // 1
-    cout << modulo(15, -4) << endl;  // 3
-    cout << modulo(-20, 6) << endl;  // -2
-    cout << modulo(-7, -3) << endl;  // -1
-    cout << modulo(5, 0) << endl;    // 0
+    int a, b;
+    cout << "digite a: ";
+    cin >> a;
+    cout << "digite b: ";
+    cin >> b;
+
+    int resultado = mod(a, b);
+    cout << "resultado de " << a << " mod " << b << " = " << resultado << endl;
+
+    return 0;
 }
