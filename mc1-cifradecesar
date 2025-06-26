@@ -6,7 +6,6 @@ void cifraDeCesar(char texto[], int deslocamento) {
     while (texto[i] != '\0') {
         char c = texto[i];
 
-        
         if (c >= 'a' && c <= 'z') {
             c = ((c - 'a' + deslocamento) % 26) + 'a';
         }
