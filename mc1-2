@@ -1,39 +1,52 @@
 #include <iostream>
 using namespace std;
 
-int divide(int dividend, int divisor) {
-    if (divisor == 0) {
-        return 0; 
+struct Resultado {
+    int quociente;
+    int resto;
+};
+
+Resultado dividir(int a, int b) {
+    if (b == 0) {
+        cout << "erro; divisão por 0" << endl;
+        return {0, 0};
     }
 
-    bool negative = false;
-    if (dividend < 0) {
-        negative = !negative;
-        dividend = -dividend;
-    }
-    if (divisor < 0) {
-        negative = !negative;
-        divisor = -divisor;
+    int sinalquociente = ((a < 0) == (b < 0)) ? 1 : -1;
+
+    int absA = a < 0 ? -a : a;
+    int absB = b < 0 ? -b : b;
+
+    int temp = absA;
+    int quociente = 0;
+
+    while (temp >= absB) {
+        temp -= absB;
+        quociente++;
     }
 
-    int quotient = 0;
-    while (dividend >= divisor) {
-        dividend = dividend - divisor;
-        quotient = quotient + 1;
+    int resto = temp;
+
+    quociente *= sinalquociente;
+
+    if (a < 0 && resto != 0) {
+        quociente += 1;
+        resto = absB - resto;
     }
 
-    if (negative) {
-        quotient = -quotient;
-    }
-
-    return quotient;
+    return {quociente, resto};
 }
 
 int main() {
-    cout << divide(10, 3) << endl;   // 3
-    cout << divide(15, -3) << endl;  // -5
-    cout << divide(-20, 4) << endl;  // -5
-    cout << divide(-7, -2) << endl;  // 3
-    cout << divide(0, 5) << endl;    // 0
-    cout << divide(5, 0 ) << endl;   // 0 
+    int a, b;
+    cout << "digite o dividendo: ";
+    cin >> a;
+    cout << "digite o divisor: ";
+    cin >> b;
+
+    Resultado res = dividir(a, b);
+    cout << "quociente: " << res.quociente << endl;
+    cout << "resto: " << res.resto << endl;
+
+    return 0;
 }
