@@ -23,7 +23,7 @@ int main() {
     cout << "piso(3.7) = " << piso(3.7) << endl;      
     cout << "piso(-2.3) = " << piso(-2.3) << endl;     
     cout << "piso(5) = " << piso(5) << endl;       
-    cout << "piso(-1.0) = " << piso(-1.0) << endl;    
+    cout << "piso(-1) = " << piso(-1) << endl;    
     cout << "piso(0.7) = " << piso(0.7) << endl;     
     cout << "piso(-0.7) = " << piso(-0.7) << endl;    
     cout << "piso(0.2) = " << piso(0.2) << endl;    
