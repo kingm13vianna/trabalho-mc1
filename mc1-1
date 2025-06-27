@@ -23,7 +23,6 @@ return resultado;
 }
 
 int main() {
-// Testes da função piso
 cout << "piso(3.7) = " << piso(3.7) << endl;      
 cout << "piso(-2.3) = " << piso(-2.3) << endl;     
 cout << "piso(5) = " << piso(5) << endl;       
