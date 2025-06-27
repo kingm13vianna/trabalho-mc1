@@ -1,11 +1,16 @@
 #include <iostream>
 using namespace std;
 
-int abs(int x) {
-    return x < 0 ? -x : x;
-}
+    int abs(int x) {
+    if(x < 0) 
+    return -x;
 
-int dividir(int a, int b) {
+    else
+     return x;
+
+    }
+
+    int dividir(int a, int b) {
     if (b == 0) {
       cout << "divisão por 0" << endl;
         return 0;
@@ -21,9 +26,11 @@ int dividir(int a, int b) {
         quociente++;
     }
 
-    return negativo ? -quociente : quociente;
-
-}
+    if(negativo)
+        return -quociente;
+    else
+        return quociente;
+    }
 
 int mod(int a, int b) {
     if (b == 0){
@@ -39,9 +46,9 @@ int mod(int a, int b) {
     }
 
     return resto;
-}
+    }
 
-int main() {
+    int main() {
     int a, b;
     cout << "digite a: ";
     cin >> a;
@@ -52,4 +59,4 @@ int main() {
     cout << "resultado de " << a << " mod " << b << " = " << resultado << endl;
 
     return 0;
-}
+    }
