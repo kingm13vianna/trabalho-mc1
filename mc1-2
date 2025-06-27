@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int teto(float x) {
+int inteiro = 0;
+bool negativo = false;
+
+if (x < 0) {
+negativo = true;
+x = -x;
+}
+
+while (x >= 1.0f) {
+x -= 1.0f;
+inteiro++;
+}
+
+if (negativo) {
+return -inteiro;
+} else {
+if (x > 0.0f) {
+return inteiro + 1;
+} else {
+return inteiro;
+}
+}
+}
+
+int main() {
+float num;
+cout << "digite um numero real: ";
+cin >> num;
+
+int resultado = teto(num);
+cout << "teto de " << num << " = " << resultado << endl;
+
+return 0;
+}
