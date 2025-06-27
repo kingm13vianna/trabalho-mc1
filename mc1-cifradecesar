@@ -2,37 +2,37 @@
 using namespace std;
 
 void cifraDeCesar(char texto[], int deslocamento) {
-    int i = 0;
-    while (texto[i] != '\0') {
-        char c = texto[i];
+int i = 0;
+while (texto[i] != '\0') {
+char c = texto[i];
 
-        if (c >= 'a' && c <= 'z') {
-            c = ((c - 'a' + deslocamento) % 26) + 'a';
-        }
-       
-        else if (c >= 'A' && c <= 'Z') {
-            c = ((c - 'A' + deslocamento) % 26) + 'A';
-        }
+if (c >= 'a' && c <= 'z') {
+c = ((c - 'a' + deslocamento) % 26) + 'a';
+}
 
-        texto[i] = c;
-        i++;
-    }
+else if (c >= 'A' && c <= 'Z') {
+c = ((c - 'A' + deslocamento) % 26) + 'A';
+}
+
+texto[i] = c;
+i++;
+}
 }
 
 int main() {
-    const int TAM = 1000;
-    char mensagem[TAM];
-    int deslocamento;
+int TAM = 520000;
+char mensagem[TAM];
+int deslocamento;
 
-    cout << "Digite a mensagem: ";
-    cin.getline(mensagem, TAM);  
+cout << "Digite a mensagem: ";
+cin.getline(mensagem, TAM);  
 
-    cout << "Digite o deslocamento: ";
-    cin >> deslocamento;
+cout << "Digite o deslocamento: ";
+cin >> deslocamento;
 
-    cifraDeCesar(mensagem, deslocamento);
+cifraDeCesar(mensagem, deslocamento);
 
-    cout << "Mensagem cifrada: " << mensagem << endl;
+cout << "Mensagem cifrada: " << mensagem << endl;
 
-    return 0;
+return 0;
 }
