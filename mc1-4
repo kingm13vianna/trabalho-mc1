@@ -2,33 +2,33 @@
 using namespace std;
 
 bool ehPrimo(int n) {
-    if (n <= 1) {
-        return false;
-    }
+if (n <= 1) {
+return false;
+}
 
-    for (int i = 2; i < n; i++) {
-        int resto = n;
-        while (resto >= i) {
-            resto = resto - i;
-        }
-        if (resto == 0) {
-            return false;
-        }
-    }
+for (int i = 2; i < n; i++) {
+int resto = n;
+while (resto >= i) {
+resto = resto - i;
+}
+if (resto == 0) {
+return false;
+}
+}
 
-    return true;
+return true;
 }
 
 void primosNoIntervalo(int a, int b) {
-    for (int i = a; i <= b; i++) {
-        if (ehPrimo(i)) {
-            cout << i << " ";
-        }
-    }
-    cout << endl;
+for (int i = a; i <= b; i++) {
+if (ehPrimo(i)) {
+cout << i << " ";
+}
+}
+cout << endl;
 }
 
 int main() {
-    primosNoIntervalo(2, 10); 
-    primosNoIntervalo(10, 20); 
+primosNoIntervalo(2, 10); 
+primosNoIntervalo(10, 20); 
 }
