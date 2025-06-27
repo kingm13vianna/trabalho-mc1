@@ -2,34 +2,38 @@
 using namespace std;
 
 int piso(double numero) {
-    if (numero >= 0) {
-        int resultado = 0;
-        while (resultado + 1 <= numero) { 
-            resultado++;
-        }
-        return resultado;
-    } 
-    else {
-        int resultado = -1;
-        while (resultado > numero) {
-            resultado--;
-        }
-        return resultado;
-    }
+if (numero >= 0) {
+int resultado = 0;
+while (resultado + 1 <= numero) { 
+resultado++;
+}
+
+return resultado;
+} 
+
+else {
+int resultado = -1;
+while (resultado > numero) {
+resultado--;
+}
+
+return resultado;
+}
+
 }
 
 int main() {
-    // Testes da função piso
-    cout << "piso(3.7) = " << piso(3.7) << endl;      
-    cout << "piso(-2.3) = " << piso(-2.3) << endl;     
-    cout << "piso(5) = " << piso(5) << endl;       
-    cout << "piso(-1) = " << piso(-1) << endl;    
-    cout << "piso(0.7) = " << piso(0.7) << endl;     
-    cout << "piso(-0.7) = " << piso(-0.7) << endl;    
-    cout << "piso(0.2) = " << piso(0.2) << endl;    
-    cout << "piso(-0.2) = " << piso(-0.2) << endl;    
-    cout << "piso(0) = " << piso(0) << endl;      
-    cout << "piso(-0.999) = " << piso(-0.999) << endl; 
+// Testes da função piso
+cout << "piso(3.7) = " << piso(3.7) << endl;      
+cout << "piso(-2.3) = " << piso(-2.3) << endl;     
+cout << "piso(5) = " << piso(5) << endl;       
+cout << "piso(-1) = " << piso(-1) << endl;    
+cout << "piso(0.7) = " << piso(0.7) << endl;     
+cout << "piso(-0.7) = " << piso(-0.7) << endl;    
+cout << "piso(0.2) = " << piso(0.2) << endl;    
+cout << "piso(-0.2) = " << piso(-0.2) << endl;    
+cout << "piso(0) = " << piso(0) << endl;      
+cout << "piso(-0.999) = " << piso(-0.999) << endl; 
 
-    return 0;
+return 0;
 }
