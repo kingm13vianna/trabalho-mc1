@@ -29,6 +29,7 @@ cout << endl;
 }
 
 int main() {
-primosNoIntervalo(2, 10); 
-primosNoIntervalo(10, 20); 
+int a, b;
+cin >> a >> b;
+primosNoIntervalo(a, b);
 }
