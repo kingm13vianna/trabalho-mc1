@@ -1,28 +1,39 @@
 #include <iostream>
 using namespace std;
 
-struct Resultado {
+    struct Resultado {
     int quociente;
     int resto;
-};
+    };
 
-Resultado dividir(int a, int b) {
+    Resultado dividir(int a, int b) {
     if (b == 0) {
-        cout << "erro; divisão por 0" << endl;
-        return {0, 0};
+    cout << "erro; divisão por 0" << endl;
+    return {0, 0};
     }
 
-    int sinalquociente = ((a < 0) == (b < 0)) ? 1 : -1;
+    int sinalquociente = 1;
+    if ((a < 0) == (b < 0))
+    sinalquociente = 1;
+    else 
+    sinalquociente = -1;
 
-    int absA = a < 0 ? -a : a;
-    int absB = b < 0 ? -b : b;
+    int absA = 0;
+    if (a < 0)
+    absA = -a;
+    else absA = a;
+
+    int absB = 0;
+    if (b < 0)
+    absB = -b;
+    else absB = b;
 
     int temp = absA;
     int quociente = 0;
 
     while (temp >= absB) {
-        temp -= absB;
-        quociente++;
+    temp -= absB;
+    quociente++;
     }
 
     int resto = temp;
@@ -30,14 +41,14 @@ Resultado dividir(int a, int b) {
     quociente *= sinalquociente;
 
     if (a < 0 && resto != 0) {
-        quociente += 1;
-        resto = absB - resto;
+    quociente += 1;
+    resto = absB - resto;
     }
 
     return {quociente, resto};
-}
+    }
 
-int main() {
+    int main() {
     int a, b;
     cout << "digite o dividendo: ";
     cin >> a;
@@ -49,4 +60,4 @@ int main() {
     cout << "resto: " << res.resto << endl;
 
     return 0;
-}
+    }
